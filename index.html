@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World Land</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="neon-sunrise">
+  <div class="page-shell">
+    <div class="sky-noise"></div>
+    <div class="aurora aurora-left"></div>
+    <div class="aurora aurora-right"></div>
+
+    <header class="hero">
+      <p class="eyebrow">Vibe coder proof of concept</p>
+      <div class="headline-wrap">
+        <div class="headline-copy">
+          <span class="headline-kicker">Welcome to</span>
+          <h1>Hello World Land</h1>
+          <p class="headline-text">
+            A tiny code-built theme park where gradients hum, mountains bounce,
+            and your first deploy already looks like it has a soundtrack.
+          </p>
+        </div>
+        <div class="badge-stack">
+          <div class="stamp">Vibe Certified</div>
+          <div class="status-card">
+            <span class="status-label">Current mood</span>
+            <strong id="moodLabel">Neon daydream</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="action-button primary" id="themeButton" type="button">Shift the sky</button>
+        <button class="action-button" id="burstButton" type="button">Release fireflies</button>
+        <button class="action-button" id="turboButton" type="button" aria-pressed="false">Turbo drift</button>
+      </div>
+    </header>
+
+    <main class="main-stage">
+      <section class="landscape-panel" aria-label="Animated landscape">
+        <div class="sun-core"></div>
+        <div class="halo-ring halo-ring-one"></div>
+        <div class="halo-ring halo-ring-two"></div>
+
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="cloud cloud-three"></div>
+
+        <div class="marquee">
+          <span>Hello World Land</span>
+          <small>Open all weekend in your browser</small>
+        </div>
+
+        <div class="scene-copy">
+          <p class="scene-intro">Tonight's feature</p>
+          <h2 id="sceneTitle">CSS skies with JavaScript fireflies.</h2>
+          <p id="sceneDescription">
+            Tap the controls and the whole place changes personality without
+            losing the plot.
+          </p>
+        </div>
+
+        <div class="mountain-layer mountain-back"></div>
+        <div class="mountain-layer mountain-mid"></div>
+        <div class="mountain-layer mountain-front"></div>
+        <div class="river"></div>
+        <div class="ground-grid"></div>
+        <div class="particle-field" id="particleField" aria-hidden="true"></div>
+      </section>
+
+      <section class="feature-grid" aria-label="Build notes">
+        <article class="feature-card tilt-left">
+          <span class="feature-index">01</span>
+          <h3>HTML set the stage</h3>
+          <p>Clear structure, punchy copy, and enough landmarks to make the page feel like a place.</p>
+        </article>
+        <article class="feature-card tilt-right">
+          <span class="feature-index">02</span>
+          <h3>CSS brought the weather</h3>
+          <p>Layered gradients, clipped mountains, glow rings, and motion cues keep the whole thing alive.</p>
+        </article>
+        <article class="feature-card tilt-left">
+          <span class="feature-index">03</span>
+          <h3>JavaScript tuned the mood</h3>
+          <p>The controls rotate themes, kick off spark bursts, and let the page shift from smooth to turbo.</p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
