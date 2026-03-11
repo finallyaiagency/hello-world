@@ -1,107 +1,132 @@
-const themes = [
-  {
-    id: "neon-sunrise",
-    mood: "Neon daydream",
-    title: "CSS skies with JavaScript fireflies.",
-    description: "Tap the controls and the whole place changes personality without losing the plot."
+const themeLabel = document.getElementById("themeLabel");
+const styleLabel = document.getElementById("styleLabel");
+const vibeLabel = document.getElementById("vibeLabel");
+const headlineText = document.getElementById("headlineText");
+const supportText = document.getElementById("supportText");
+const tickerText = document.getElementById("tickerText");
+const darkModeButton = document.getElementById("darkModeButton");
+const lightModeButton = document.getElementById("lightModeButton");
+const accentButton = document.getElementById("accentButton");
+const styleButtons = Array.from(document.querySelectorAll(".style-button"));
+const stars = document.getElementById("stars");
+
+const styles = ["signal", "ion", "vector"];
+
+const styleContent = {
+  signal: {
+    label: "Signal blue",
+    vibe: "Precise and premium",
+    headline: "High-trust interfaces with real motion discipline.",
+    support: "Finally AI Agency combines AI-assisted speed with strong taste, making launch pages, product experiences, and branded demos feel custom.",
+    ticker: "Signal blue system active"
   },
-  {
-    id: "night-arcade",
-    mood: "Midnight arcade",
-    title: "The park lights flip on and the mountains start glowing.",
-    description: "Same scene, different energy: cooler palette, sharper contrast, and a little more after-hours swagger."
+  ion: {
+    label: "Ion violet",
+    vibe: "Strategic and modern",
+    headline: "A sharper visual system for brands that need presence without noise.",
+    support: "This mode pushes the tech signal a little further while keeping the typography, structure, and motion presentation-ready.",
+    ticker: "Ion violet system active"
   },
-  {
-    id: "mint-horizon",
-    mood: "Mint horizon",
-    title: "Soft sunlight, clean air, and a suspiciously photogenic river.",
-    description: "This pass leans breezy and bright, like somebody color-graded your hello world on purpose."
+  vector: {
+    label: "Vector mint",
+    vibe: "Calm technical confidence",
+    headline: "Cleaner energy for premium brands with a more restrained tone.",
+    support: "Vector mint shifts the page into a lighter-feeling, enterprise-friendly direction without losing the agency signature.",
+    ticker: "Vector mint system active"
   }
-];
+};
 
-const particleField = document.getElementById("particleField");
-const themeButton = document.getElementById("themeButton");
-const burstButton = document.getElementById("burstButton");
-const turboButton = document.getElementById("turboButton");
-const moodLabel = document.getElementById("moodLabel");
-const sceneTitle = document.getElementById("sceneTitle");
-const sceneDescription = document.getElementById("sceneDescription");
+let currentStyleIndex = 0;
 
-let themeIndex = 0;
-let autoBurstHandle = null;
-
-function applyTheme(index) {
-  const theme = themes[index];
-  document.body.dataset.theme = theme.id;
-  moodLabel.textContent = theme.mood;
-  sceneTitle.textContent = theme.title;
-  sceneDescription.textContent = theme.description;
+function setTheme(theme) {
+  const isDark = theme === "dark";
+  document.body.dataset.theme = theme;
+  themeLabel.textContent = isDark ? "Dark mode" : "Light mode";
+  darkModeButton.classList.toggle("is-active", isDark);
+  lightModeButton.classList.toggle("is-active", !isDark);
 }
 
-function createParticle(x, y, driftX, driftY, hueOffset) {
-  const particle = document.createElement("span");
-  particle.className = "particle";
-  particle.style.left = `${x}px`;
-  particle.style.top = `${y}px`;
-  particle.style.setProperty("--drift-x", `${driftX}px`);
-  particle.style.setProperty("--drift-y", `${driftY}px`);
-  particle.style.background = `radial-gradient(circle, hsl(${hueOffset} 100% 88%) 0%, hsla(${hueOffset} 100% 80% / 0.08) 78%)`;
-  particle.style.boxShadow = `0 0 20px hsla(${hueOffset} 100% 75% / 0.85)`;
-  particleField.appendChild(particle);
-  particle.addEventListener("animationend", () => particle.remove(), { once: true });
+function setStyle(style) {
+  const content = styleContent[style];
+  document.body.dataset.style = style;
+  styleLabel.textContent = content.label;
+  vibeLabel.textContent = content.vibe;
+  headlineText.textContent = content.headline;
+  supportText.textContent = content.support;
+  tickerText.textContent = content.ticker;
+  currentStyleIndex = styles.indexOf(style);
+
+  styleButtons.forEach((button) => {
+    button.classList.toggle("is-selected", button.dataset.style === style);
+  });
 }
 
-function burstParticles(count = 16) {
-  const bounds = particleField.getBoundingClientRect();
+function createStars(total = 48) {
+  const fragment = document.createDocumentFragment();
 
+  for (let index = 0; index < total; index += 1) {
+    const star = document.createElement("span");
+    star.className = "star";
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 72}%`;
+    star.style.opacity = (0.28 + Math.random() * 0.52).toFixed(2);
+    star.style.setProperty("--duration", `${4 + Math.random() * 6}s`);
+    fragment.appendChild(star);
+  }
+
+  stars.replaceChildren(fragment);
+}
+
+function createPulse(originX, originY, count = 12) {
   for (let index = 0; index < count; index += 1) {
-    const x = bounds.width * (0.18 + Math.random() * 0.64);
-    const y = bounds.height * (0.22 + Math.random() * 0.52);
-    const driftX = (Math.random() - 0.5) * 180;
-    const driftY = -70 - Math.random() * 140;
-    const hue = 32 + Math.round(Math.random() * 180);
-    createParticle(x, y, driftX, driftY, hue);
+    const pulse = document.createElement("span");
+    pulse.className = "star";
+    pulse.style.left = `${originX}px`;
+    pulse.style.top = `${originY}px`;
+    pulse.style.opacity = "1";
+    pulse.style.transform = "scale(1.8)";
+    pulse.style.setProperty("--duration", `${0.8 + Math.random() * 0.8}s`);
+    document.body.appendChild(pulse);
+    const animation = pulse.animate(
+      [
+        { transform: "translate(0, 0) scale(0.8)", opacity: 1 },
+        {
+          transform: `translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) scale(0.1)`,
+          opacity: 0
+        }
+      ],
+      { duration: 900, easing: "ease-out" }
+    );
+    animation.addEventListener("finish", () => pulse.remove(), { once: true });
   }
 }
 
-function rotateTheme() {
-  themeIndex = (themeIndex + 1) % themes.length;
-  applyTheme(themeIndex);
-  burstParticles(20);
+function cycleStyle() {
+  currentStyleIndex = (currentStyleIndex + 1) % styles.length;
+  setStyle(styles[currentStyleIndex]);
+  createPulse(window.innerWidth * 0.76, window.innerHeight * 0.36, 10);
 }
 
-function setTurboMode(enabled) {
-  document.body.dataset.turbo = String(enabled);
-  turboButton.setAttribute("aria-pressed", String(enabled));
-  turboButton.textContent = enabled ? "Turbo engaged" : "Turbo drift";
+darkModeButton.addEventListener("click", () => setTheme("dark"));
+lightModeButton.addEventListener("click", () => setTheme("light"));
+accentButton.addEventListener("click", cycleStyle);
 
-  window.clearInterval(autoBurstHandle);
-  autoBurstHandle = enabled ? window.setInterval(() => burstParticles(8), 1200) : null;
-}
-
-themeButton.addEventListener("click", rotateTheme);
-burstButton.addEventListener("click", () => burstParticles(22));
-turboButton.addEventListener("click", () => {
-  const nextState = document.body.dataset.turbo !== "true";
-  setTurboMode(nextState);
-  burstParticles(nextState ? 28 : 10);
+styleButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setStyle(button.dataset.style);
+    const rect = button.getBoundingClientRect();
+    createPulse(rect.left + rect.width / 2, rect.top + rect.height / 2, 8);
+  });
 });
 
 window.addEventListener("pointermove", (event) => {
-  if (Math.random() > 0.1) {
+  if (Math.random() > 0.012) {
     return;
   }
 
-  const rect = particleField.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-
-  if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
-    return;
-  }
-
-  createParticle(x, y, (Math.random() - 0.5) * 90, -50 - Math.random() * 70, 40 + Math.round(Math.random() * 220));
+  createPulse(event.clientX, event.clientY, 3);
 });
 
-applyTheme(themeIndex);
-burstParticles(18);
+createStars();
+setTheme("dark");
+setStyle("signal");

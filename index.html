@@ -3,92 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World Land</title>
+  <title>Finally AI Agency | Interactive Web Showcase</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="neon-sunrise">
+<body data-theme="dark" data-style="signal">
   <div class="page-shell">
-    <div class="sky-noise"></div>
-    <div class="aurora aurora-left"></div>
-    <div class="aurora aurora-right"></div>
+    <div class="animated-backdrop" aria-hidden="true">
+      <div class="grid-plane"></div>
+      <div class="grid-columns"></div>
+      <div class="energy-orb energy-orb-one"></div>
+      <div class="energy-orb energy-orb-two"></div>
+      <div class="scanlines"></div>
+      <div class="stars" id="stars"></div>
+    </div>
 
-    <header class="hero">
-      <p class="eyebrow">Vibe coder proof of concept</p>
-      <div class="headline-wrap">
-        <div class="headline-copy">
-          <span class="headline-kicker">Welcome to</span>
-          <h1>Hello World Land</h1>
-          <p class="headline-text">
-            A tiny code-built theme park where gradients hum, mountains bounce,
-            and your first deploy already looks like it has a soundtrack.
-          </p>
-        </div>
-        <div class="badge-stack">
-          <div class="stamp">Vibe Certified</div>
-          <div class="status-card">
-            <span class="status-label">Current mood</span>
-            <strong id="moodLabel">Neon daydream</strong>
-          </div>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <span class="brand-mark">FA</span>
+        <div>
+          <p class="eyebrow">Finally AI Agency</p>
+          <strong>Interactive showcase system</strong>
         </div>
       </div>
-
-      <div class="controls">
-        <button class="action-button primary" id="themeButton" type="button">Shift the sky</button>
-        <button class="action-button" id="burstButton" type="button">Release fireflies</button>
-        <button class="action-button" id="turboButton" type="button" aria-pressed="false">Turbo drift</button>
+      <div class="mode-switch" role="group" aria-label="Color theme switcher">
+        <button class="mini-toggle is-active" id="darkModeButton" type="button">Dark</button>
+        <button class="mini-toggle" id="lightModeButton" type="button">Light</button>
       </div>
     </header>
 
-    <main class="main-stage">
-      <section class="landscape-panel" aria-label="Animated landscape">
-        <div class="sun-core"></div>
-        <div class="halo-ring halo-ring-one"></div>
-        <div class="halo-ring halo-ring-two"></div>
+    <main class="hero-layout">
+      <section class="hero-copy">
+        <p class="hero-tag">Client-facing landing page concept</p>
+        <h1>Finally AI Agency builds pages that look sharp before the pitch begins.</h1>
+        <p class="hero-body">
+          This concept is designed as a showcase for prospective clients: a polished
+          signal-driven interface, restrained motion, strong hierarchy, and enough
+          flexibility to demonstrate how the agency can tailor a visual system to a brand.
+        </p>
 
-        <div class="cloud cloud-one"></div>
-        <div class="cloud cloud-two"></div>
-        <div class="cloud cloud-three"></div>
-
-        <div class="marquee">
-          <span>Hello World Land</span>
-          <small>Open all weekend in your browser</small>
+        <div class="cta-row">
+          <button class="primary-cta" id="accentButton" type="button">Cycle visual system</button>
+          <a class="ghost-cta" href="#style-lab">View capability stack</a>
         </div>
 
-        <div class="scene-copy">
-          <p class="scene-intro">Tonight's feature</p>
-          <h2 id="sceneTitle">CSS skies with JavaScript fireflies.</h2>
-          <p id="sceneDescription">
-            Tap the controls and the whole place changes personality without
-            losing the plot.
-          </p>
+        <div class="metric-strip">
+          <article class="metric-card">
+            <span class="metric-label">Theme</span>
+            <strong id="themeLabel">Dark mode</strong>
+          </article>
+          <article class="metric-card">
+            <span class="metric-label">Visual system</span>
+            <strong id="styleLabel">Signal blue</strong>
+          </article>
+          <article class="metric-card accent">
+            <span class="metric-label">Client impression</span>
+            <strong id="vibeLabel">Precise and premium</strong>
+          </article>
         </div>
-
-        <div class="mountain-layer mountain-back"></div>
-        <div class="mountain-layer mountain-mid"></div>
-        <div class="mountain-layer mountain-front"></div>
-        <div class="river"></div>
-        <div class="ground-grid"></div>
-        <div class="particle-field" id="particleField" aria-hidden="true"></div>
       </section>
 
-      <section class="feature-grid" aria-label="Build notes">
-        <article class="feature-card tilt-left">
-          <span class="feature-index">01</span>
-          <h3>HTML set the stage</h3>
-          <p>Clear structure, punchy copy, and enough landmarks to make the page feel like a place.</p>
-        </article>
-        <article class="feature-card tilt-right">
-          <span class="feature-index">02</span>
-          <h3>CSS brought the weather</h3>
-          <p>Layered gradients, clipped mountains, glow rings, and motion cues keep the whole thing alive.</p>
-        </article>
-        <article class="feature-card tilt-left">
-          <span class="feature-index">03</span>
-          <h3>JavaScript tuned the mood</h3>
-          <p>The controls rotate themes, kick off spark bursts, and let the page shift from smooth to turbo.</p>
-        </article>
+      <section class="hero-visual" aria-label="Agency presentation panel">
+        <div class="hero-card">
+          <div class="card-glow"></div>
+          <div class="display-head">
+            <span class="display-pill">Agency demo</span>
+            <span class="display-status">Presentation ready</span>
+          </div>
+
+          <div class="display-window">
+            <div class="window-chrome">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="display-copy">
+              <p class="display-kicker">Positioning statement</p>
+              <h2 id="headlineText">High-trust interfaces with real motion discipline.</h2>
+              <p id="supportText">
+                Finally AI Agency combines AI-assisted speed with strong taste,
+                making launch pages, product experiences, and branded demos feel custom.
+              </p>
+            </div>
+            <div class="signal-bars">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="display-grid"></div>
+          </div>
+
+          <div class="ticker" id="tickerText">Signal blue system active</div>
+        </div>
       </section>
     </main>
+
+    <section class="style-lab" id="style-lab">
+      <div class="section-heading">
+        <p class="eyebrow">Capability Stack</p>
+        <h2>A system you can show a client without apologizing for it</h2>
+      </div>
+
+      <div class="style-controls" role="group" aria-label="Visual presets">
+        <button class="style-button is-selected" data-style="signal" type="button">Signal Blue</button>
+        <button class="style-button" data-style="ion" type="button">Ion Violet</button>
+        <button class="style-button" data-style="vector" type="button">Vector Mint</button>
+      </div>
+
+      <div class="showcase-grid">
+        <article class="showcase-card">
+          <span class="showcase-index">01</span>
+          <h3>Brand-led visual systems</h3>
+          <p>Each mode shows how the same layout can adapt to a different client personality without feeling like a template swap.</p>
+        </article>
+        <article class="showcase-card">
+          <span class="showcase-index">02</span>
+          <h3>Motion with restraint</h3>
+          <p>Animated grids, soft energy drift, and ambient responses keep the page alive while preserving a premium tone.</p>
+        </article>
+        <article class="showcase-card">
+          <span class="showcase-index">03</span>
+          <h3>Presentation-ready copy</h3>
+          <p>The content is framed like a real agency showcase, so the page works as a conversation piece instead of a visual experiment.</p>
+        </article>
+      </div>
+    </section>
   </div>
 
   <script src="main.js"></script>
